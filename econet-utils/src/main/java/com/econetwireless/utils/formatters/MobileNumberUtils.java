@@ -5,18 +5,20 @@ import com.econetwireless.utils.execeptions.InvalidMobileNumberException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+
 /**
  * Created by taurai on 10/31/15.
  */
 public class MobileNumberUtils {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MobileNumberUtils.class);
-
+    private static final  Logger LOGGER = LoggerFactory.getLogger(MobileNumberUtils.class);
+//changed to static
     private MobileNumberUtils() {
 
     }
 
-    public static String formatMobileNumber(final String mobileNumber) {
+    private static String formatMobileNumber(final String mobileNumber) {
         String newMobileNumber = removeAllSpaces( mobileNumber);
         final String invalidMobileNumberMessage = "Invalid Mobile Number Supplied";
         if (newMobileNumber.length() > 9) {
@@ -37,7 +39,7 @@ public class MobileNumberUtils {
             throw new InvalidMobileNumberException(ResponseCode.INVALID_REQUEST, invalidMobileNumberMessage);
         }
     }
-    private static String trimMobile(String mobileNumber) {
+    private static String trimMobile(String mobileNumber) throws InvalidMobileNumberException {
         if(canTrimMobile(mobileNumber)) {
             return mobileNumber.substring(mobileNumber.length() - 9);
         }
