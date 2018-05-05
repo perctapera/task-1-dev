@@ -42,6 +42,9 @@
         <Logger name="com.econetwireless" level="info" additivity="false">
             <AppenderRef ref="RoutingAppender" level="info"/>
         </Logger>
+        <Root level="info">
+            <AppenderRef ref="RoutingAppender" />
+            </Root>
 
     </Loggers>
 </Configuration>
